@@ -1,4 +1,4 @@
-#H1 Sorting Friends with Angular
+# Sorting Friends with Angular
 
 #### Overview
 
