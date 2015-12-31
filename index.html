@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app="angularFriends">
+
+<head>
+  <meta charset="utf-8">
+  <title>Angular Friends</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+</head>
+
+<body ng-controller="mainCtrl">
+
+  <h1>The Friend Finder</h1>
+
+  <form class="form-inline">
+    <label for="search-input">Name Search</label>
+    <input type="text" ng-model="searchTerm.name" name="enter text" placeholder="Enter Name">
+    <label for="search-input">Location Search</label>
+    <input type="text" ng-model="searchTerm.current_location.$" name="enter text" placeholder="Enter Location">
+  </form>
+
+  <button type="button" class="btn btn-info" ng-click="sortType = 'name'; sortReverse = !sortReverse">Sort Ascending/Descending</button>
+
+
+
+
+
+
+  <ul class="list-group">
+    <li ng-repeat="friend in friends | filter:searchTerm | orderBy:sortType:sortReverse" class="list-group-item">
+      <img src="{{friend.pic_square}}" alt="profile pic" />
+      <h4>{{friend.name}}</h4>
+      <span>{{friend.current_location.city}}</span>{{$last ? '' : ','}}
+      <span>{{friend.current_location.state}}</span>{{$last ? '' : ','}}
+      {{friend.current_location.country}}
+    </li>
+  </ul>
+
+
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.js"></script>
+  <script type="text/javascript" src="app/app.js"></script>
+  <script type="text/javascript" src="app/friendController.js"></script>
+</body>
+
+</html>
